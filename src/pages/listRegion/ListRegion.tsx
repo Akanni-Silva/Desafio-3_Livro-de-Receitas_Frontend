@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
-import type { Area } from "../../../models/Area";
-import RegionDetail from "../regionDetails/RegionDetail";
-import { get } from "../../../services/Service";
-import RegionCard from "../cardRegion/CardRegion";
+import type { Area } from "../../models/Area";
+import RegionDetail from "../../components/regions/regionDetails/RegionDetail";
+import { get } from "../../services/Service";
+import RegionCard from "../../components/regions/cardRegion/CardRegion";
 
 function ListRegions() {
   const [isLoading, setIsLoading] = useState<boolean>(true);

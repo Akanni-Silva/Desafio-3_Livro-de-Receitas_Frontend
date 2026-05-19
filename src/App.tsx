@@ -3,8 +3,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import ListMeal from "./pages/listmeal/ListMeal";
 import MealDetails from "./components/meal/mealDetails/MealDetails";
-import ListRegions from "./components/regions/listRegion/ListRegion";
-
+import ListRegions from "./pages/listRegion/ListRegion";
 
 function App() {
   return (

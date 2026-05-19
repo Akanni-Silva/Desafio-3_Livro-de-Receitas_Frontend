@@ -34,7 +34,6 @@ function ListMeal({
   const [showFilters, setShowFilters] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>(initialSearchTerm);
   const [searchTerm, setSearchTerm] = useState<string>(initialSearchTerm);
-  const [filterError, setFilterError] = useState<string | null>(null);
 
   // Buscar categorias da API
   const fetchCategories = async () => {
