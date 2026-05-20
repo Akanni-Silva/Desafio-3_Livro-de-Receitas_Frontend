@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from "react-router-dom";
 import CardMeal from "../../components/meal/cardmeal/CardMeal";
@@ -209,19 +208,19 @@ function ListMeal({
     <>
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col px-4">
-          {/* BARRA DE PESQUISA */}
+          {/* BARRA DE PESQUISA - CORRIGIDA */}
           <div className="mb-6">
-            <form onSubmit={handleSearch} className="relative">
+            <form onSubmit={handleSearch}>
               <div className="relative">
                 <input
                   type="text"
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  placeholder="🔍 Buscar receitas... (ex: Chicken, Pasta, Cake)"
-                  className="w-full px-6 py-4 pl-12 pr-24 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                  placeholder="Buscar receitas..."
+                  className="w-full px-3 md:px-6 py-2 md:py-4 pl-8 md:pl-12 pr-16 md:pr-24 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-sm md:text-base"
                 />
                 <svg
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                  className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -233,19 +232,19 @@ function ListMeal({
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
-                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-2">
+                <div className="absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 flex gap-1 md:gap-2">
                   {searchInput && (
                     <button
                       type="button"
                       onClick={() => setSearchInput("")}
-                      className="text-gray-400 hover:text-gray-600 p-2"
+                      className="text-gray-400 hover:text-gray-600 p-1 md:p-2"
                     >
                       ✕
                     </button>
                   )}
                   <button
                     type="submit"
-                    className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition"
+                    className="bg-green-600 text-white px-3 md:px-6 py-1 md:py-2 rounded-full hover:bg-green-700 transition text-sm md:text-base"
                   >
                     Buscar
                   </button>
@@ -253,8 +252,8 @@ function ListMeal({
               </div>
             </form>
 
-            {/* Sugestões de busca rápida */}
-            <div className="flex gap-2 mt-3 flex-wrap">
+            {/* Sugestões de busca rápida - CORRIGIDO */}
+            <div className="flex gap-1 md:gap-2 mt-3 flex-wrap">
               <span className="text-xs text-gray-500">Buscas rápidas:</span>
               {["Chicken", "Pasta", "Cake", "Soup", "Curry", "Rice"].map(
                 (suggestion) => (
@@ -281,7 +280,7 @@ function ListMeal({
               onClick={() => setShowFilters(!showFilters)}
               className="w-full bg-green-600 text-white py-2 rounded-lg flex items-center justify-center gap-2"
             >
-              <span>📂</span>
+              
               {showFilters ? "Ocultar Filtros" : "Mostrar Filtros"}
             </button>
           </div>
@@ -373,7 +372,7 @@ function ListMeal({
             {searchTerm ? (
               <div className="flex items-center gap-2">
                 <span>
-                  🔍 Resultados para: <strong>"{searchTerm}"</strong>
+                  Resultados para: <strong>"{searchTerm}"</strong>
                 </span>
                 <button
                   onClick={clearSearch}
@@ -384,11 +383,11 @@ function ListMeal({
               </div>
             ) : selectedArea ? (
               <span>
-                🌍 Receitas da região: <strong>{selectedArea}</strong>
+                Receitas da região: <strong>{selectedArea}</strong>
               </span>
             ) : (
               <span>
-                🍽️ Categoria: <strong>{selectedCategory}</strong>
+                Categoria: <strong>{selectedCategory}</strong>
               </span>
             )}
             <span className="ml-2">({meals.length} receitas encontradas)</span>

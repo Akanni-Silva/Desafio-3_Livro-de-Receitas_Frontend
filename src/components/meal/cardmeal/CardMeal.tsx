@@ -1,5 +1,5 @@
+import { useNavigate } from "react-router-dom";
 import type { Meal } from "../../../models/Meal";
-import { getMealImage } from "../../../utils/imagesUtil";
 
 interface CardMealProps {
   meal: Meal;
@@ -14,34 +14,40 @@ function CardMeal({
   showCategory = true,
   showArea = true,
 }: CardMealProps) {
+  const navigate = useNavigate();
+
   const handleClick = () => {
     if (onClick) {
       onClick(meal);
+    } else {
+      navigate(`/meal/${meal.idMeal}`);
     }
   };
 
-  // Extrair as primeiras 3 tags (se existirem)
-  const tags = meal.strTags ? meal.strTags.split(",").slice(0, 3) : [];
+  // Extrair as primeiras 2 tags
+  const tags = meal.strTags ? meal.strTags.split(",").slice(0, 2) : [];
 
   return (
     <div
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col h-full"
       onClick={handleClick}
     >
       {/* Imagem da receita */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-40 md:h-48 overflow-hidden bg-gray-200">
         <img
-          src={getMealImage(meal.strMealThumb, "medium")}
+          src={meal.strMealThumb}
           alt={meal.strMeal}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
         />
-        {/* Badge de tags (opcional) */}
+
+        {/* Badge de tags - Tamanho responsivo */}
         {tags.length > 0 && (
           <div className="absolute top-2 right-2 flex gap-1">
             {tags.map((tag, index) => (
               <span
                 key={index}
-                className="bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-full"
+                className="bg-black bg-opacity-70 text-white text-[10px] md:text-xs px-1.5 md:px-2 py-0.5 rounded-full backdrop-blur-sm"
               >
                 {tag.trim()}
               </span>
@@ -51,53 +57,35 @@ function CardMeal({
       </div>
 
       {/* Conteúdo do card */}
-      <div className="p-4">
-        {/* Título */}
-        <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
+      <div className="flex-1 flex flex-col p-2 md:p-3 lg:p-4">
+        {/* Título - Responsivo */}
+        <h3 className="text-sm md:text-base lg:text-lg font-bold text-gray-800 mb-1 line-clamp-2 group-hover:text-green-600 transition-colors">
           {meal.strMeal}
         </h3>
 
-        {/* Informações adicionais */}
-        <div className="space-y-1 text-sm text-gray-600">
+        {/* Informações adicionais - Responsivo */}
+        <div className="space-y-1 text-xs md:text-sm text-gray-600">
           {showCategory && meal.strCategory && (
-            <div className="flex items-center gap-2">
-              <span className="font-semibold">Categoria:</span>
-              <span className="text-indigo-600">{meal.strCategory}</span>
+            <div className="flex items-center gap-1">
+              <span className="text-xs md:text-sm">🍽️</span>
+              <span className="truncate">{meal.strCategory}</span>
             </div>
           )}
 
           {showArea && meal.strArea && (
-            <div className="flex items-center gap-2">
-              <span className="font-semibold">Origem:</span>
-              <span>{meal.strArea}</span>
+            <div className="flex items-center gap-1">
+              <span className="text-xs md:text-sm">🌍</span>
+              <span className="truncate">{meal.strArea}</span>
             </div>
           )}
-
-          {/* Indicador de ingredientes */}
-          <div className="flex items-center gap-2 text-gray-500 mt-2">
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M9 21h6M12 15v6"
-              />
-            </svg>
-            <span>Ver ingredientes</span>
-          </div>
         </div>
 
-        {/* Botão de ação */}
+        {/* Botão - Responsivo */}
         <button
-          className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors duration-200"
+          className="mt-3 md:mt-4 w-full bg-green-600 text-white py-1.5 md:py-2 px-3 md:px-4 rounded-lg hover:bg-green-700 transition-colors duration-200 text-xs md:text-sm font-medium"
           onClick={handleClick}
         >
-          Ver Receita
+          Ver Receita →
         </button>
       </div>
     </div>

@@ -87,7 +87,7 @@ function RegionDetail({ area, onBack }: RegionDetailProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header da Região */}
-      <div className="bg-gradient-to-r from-green-900 to-green-700 text-white py-8">
+      <div className="bg-linear-to-r from-green-900 to-green-700 text-white py-8">
         <div className="container mx-auto px-4">
           <button
             onClick={onBack}

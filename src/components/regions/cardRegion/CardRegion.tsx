@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { Area } from "../../../models/Area";
 
 interface RegionCardProps {
@@ -96,7 +94,8 @@ function RegionCard({ area, onClick }: RegionCardProps) {
       onClick={() => onClick(area)}
       className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
     >
-      <div className="h-28 bg-gray-100 flex items-center justify-center">
+      {/* Flag - Altura responsiva */}
+      <div className="h-20 md:h-24 lg:h-28 bg-gray-100 flex items-center justify-center overflow-hidden">
         {flagUrl ? (
           <img
             src={flagUrl}
@@ -110,15 +109,19 @@ function RegionCard({ area, onClick }: RegionCardProps) {
             }}
           />
         ) : null}
-        <span className={`text-4xl ${flagUrl ? "hidden" : ""}`}>🌍</span>
+        <span className={`text-3xl md:text-4xl ${flagUrl ? "hidden" : ""}`}>
+          🌍
+        </span>
       </div>
-      <div className="p-3 text-center bg-gradient-to-r from-green-50 to-white">
-        <h3 className="text-sm font-semibold text-gray-800 truncate">
+
+      {/* Conteúdo - Texto responsivo */}
+      <div className="p-2 md:p-3 text-center bg-linear-to-r from-green-50 to-white">
+        <h3 className="text-xs md:text-sm font-semibold text-gray-800 whitespace-normal md:truncate">
           {area.strArea}
         </h3>
         {area.recipeCount > 0 && (
-          <p className="text-xs text-gray-500 mt-1">
-            {area.recipeCount} receitas
+          <p className="text-[10px] md:text-xs text-gray-500 mt-0.5 md:mt-1">
+            {area.recipeCount} {area.recipeCount === 1 ? "receita" : "receitas"}
           </p>
         )}
       </div>
