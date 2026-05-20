@@ -25,10 +25,6 @@ function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
-            <Link to="/regions" className="hover:text-green-200 transition">
-              Regiões
-            </Link>
-            <p>|</p>
             <Link to="/receitas" className="hover:text-green-200 transition">
               Receitas
             </Link>

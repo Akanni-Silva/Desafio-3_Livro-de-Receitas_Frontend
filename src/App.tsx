@@ -3,7 +3,6 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import ListMeal from "./pages/listmeal/ListMeal";
 import MealDetails from "./components/meal/mealDetails/MealDetails";
-import ListRegions from "./pages/listRegion/ListRegion";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
             <Routes>
               <Route path="/" element={<ListMeal />} />
               <Route path="/receitas" element={<ListMeal />} />
-              <Route path="/regions" element={<ListRegions />} />
               <Route path="/meal/:id" element={<MealDetails />} />
             </Routes>
           </main>
