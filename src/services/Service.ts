@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 
 const api = axios.create({
   baseURL: "https://www.themealdb.com/api/json/v1/1",
-  timeout: 30000, // Aumentado para 30 segundos
+  timeout: 10000, 
 });
 
 // Captura de Erros de conexão e HTTP
