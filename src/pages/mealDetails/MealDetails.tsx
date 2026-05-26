@@ -242,7 +242,7 @@ function MealDetails() {
         />
 
         {/* Gradiente inferior */}
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-linear-to-t from-black/70 via-black/40 to-transparent"></div>
 
         {/* Conteúdo do Hero - Padding responsivo */}
         <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 lg:p-8 text-white">
